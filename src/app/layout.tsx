@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import "./globals.css";
 import { Arimo } from "@next/font/google";
+import Header from "@/components/header";
 
 export const metadata: Metadata = {
   title: "Product Hunt Clone",
@@ -46,6 +47,7 @@ export default function RootLayout({
       <body
         className={`${arimo.className} text-font-dark-grey antialiased h-dvh`}
       >
+        <Header />
         {children}
       </body>
     </html>
