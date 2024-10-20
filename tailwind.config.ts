@@ -8,7 +8,13 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {},
+      colors: {
+        "font-grey": "#666666",
+        "font-black": "#333333",
+        "font-light-blue": "#465381",
+        "font-orange": "#E5461A",
+        "font-light-orange": "#F1CBC1",
+      },
     },
   },
   plugins: [],

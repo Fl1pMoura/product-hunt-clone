@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import "./globals.css";
-import { Arimo } from "@next/font/google";
+import { Inter } from "@next/font/google";
 import Header from "@/components/header";
+import { ClerkProvider } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
   title: "Product Hunt Clone",
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
   },
 };
 
-const arimo = Arimo({
+const inter = Inter({
   weight: ["400", "500", "700", "600"],
   subsets: ["latin"], // ou outros subconjuntos que você precisar
 });
@@ -43,13 +44,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
-      <body
-        className={`${arimo.className} text-font-dark-grey antialiased h-dvh`}
-      >
-        <Header />
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="pt-BR">
+        <body className={`${inter.className} text-font-grey antialiased h-dvh`}>
+          <Header />
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

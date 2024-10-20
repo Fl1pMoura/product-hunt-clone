@@ -1,23 +1,76 @@
+"use client";
 import Link from "next/link";
 import { ProductHuntLogo } from "./icons/ProductHuntLogo";
+import { ProductsIcon } from "./icons/ProductsIcon";
+import { JobsIcon } from "./icons/JobsIcon";
+import { MarketplaceIcon } from "./icons/MarketplaceIcon";
+import { SearchIcon } from "./icons/SerachIcon";
+import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
+import { useUser } from "@clerk/nextjs";
 
 export default function Header() {
+  const { user, isLoaded } = useUser();
+
+  if (!isLoaded) return null; // Aguarde até que os dados do usuário sejam carregados
+
+  const profileImageUrl = user?.imageUrl || "";
   return (
-    <header className="min-h-16 flex items-center justify-center px-6 bg-red-50 ">
-      <div className="flex items-center">
+    <header className="h-16 flex items-center justify-center px-6 border-b border-font-grey/0.5">
+      <div className="flex items-center gap-6 mr-auto">
         <Link href="/">
-          <ProductHuntLogo className="size-8" />
+          <ProductHuntLogo className="size-10" />
         </Link>
-        <input type="text" />
+        <div className="relative w-full h-full block">
+          <input
+            className="w-44 min-h-8 border border-[#666666]/50 outline-none rounded-md pl-9 pr-3"
+            type="text"
+            placeholder="Search"
+          />
+          <SearchIcon className="size-4 absolute top-1/2 left-3 -translate-y-1/2" />
+        </div>
       </div>
-      <nav>
-        <Link href="/">Produtos</Link>
-        <Link href="/">Categorias</Link>
-        <Link href="/">Sobre</Link>
+      <nav className="flex items-center text-font-light-blue h-full">
+        <Link
+          className="px-4 py-2.5 flex gap-2 h-full items-center transition-all hover:text-font-orange"
+          href="/"
+        >
+          <ProductsIcon className="size-5" />
+          Produtos
+        </Link>
+        <Link
+          className="px-4 py-2.5 flex gap-2 h-full items-center transition-all hover:text-font-orange"
+          href="/"
+        >
+          <MarketplaceIcon className="size-5" />
+          MarketPlace
+        </Link>
+        <Link
+          className="px-4 py-2.5 flex gap-2 h-full items-center transition-all hover:text-font-orange"
+          href="/"
+        >
+          <JobsIcon className="size-5" />
+          Vagas
+        </Link>
       </nav>
-      <div className="flex">
-        <Link href="/login">Login</Link>
-        <Link href="/register">Registro</Link>
+      <div className="flex ml-auto gap-4">
+        <SignedOut>
+          <SignInButton>
+            <button className="min-h-8 px-4 flex items-center justify-center rounded-xl bg-white transition-all border border-font-orange text-sm text-font-orange hover:bg-font-orange hover:text-white">
+              Login
+            </button>
+          </SignInButton>
+        </SignedOut>
+        <SignedIn>
+          <div className="flex items-center gap-2">
+            {profileImageUrl && (
+              <img
+                src={profileImageUrl}
+                alt={user?.fullName}
+                className="w-10 h-10 rounded-full"
+              />
+            )}
+          </div>
+        </SignedIn>
       </div>
     </header>
   );
