@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 
 const inter = Inter({
   weight: ["400", "500", "700", "600"],
-  subsets: ["latin"], // ou outros subconjuntos que você precisar
+  subsets: ["latin"],
 });
 
 export default function RootLayout({
@@ -46,7 +46,9 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="pt-BR">
-        <body className={`${inter.className} text-font-grey antialiased h-dvh`}>
+        <body
+          className={`${inter.className} bg-body text-font-grey antialiased h-dvh`}
+        >
           <Header />
           {children}
         </body>

@@ -13,12 +13,10 @@ import Image from "next/image";
 export default function Header() {
   const { user, isLoaded } = useUser();
 
-  if (!isLoaded) return null; // Aguarde até que os dados do usuário sejam carregados
-
   const profileImageUrl = user?.imageUrl || "";
   const username = user?.fullName || "username";
   return (
-    <header className="h-16 flex items-center justify-center px-6 border-b border-font-grey/0.5">
+    <header className="bg-white h-16 flex items-center justify-center px-6 border-b border-font-grey/0.5">
       <div className="flex items-center gap-6 mr-auto">
         <Link href="/">
           <ProductHuntLogo className="size-10" />
@@ -65,6 +63,7 @@ export default function Header() {
         </SignedOut>
         <SignedIn>
           <div className="flex items-center gap-2">
+            {!isLoaded && <div>loading...</div>}
             {profileImageUrl && (
               <UserButton
                 appearance={{ elements: { userButtonAvatarBox: "w-10 h-10" } }}

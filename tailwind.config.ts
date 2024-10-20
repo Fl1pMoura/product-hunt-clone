@@ -14,6 +14,7 @@ const config: Config = {
         "font-light-blue": "#465381",
         "font-orange": "#E5461A",
         "font-light-orange": "#F1CBC1",
+        body: "#F4F5F6",
       },
     },
   },
