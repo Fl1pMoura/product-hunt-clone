@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import Link from "next/link";
 import { ProductHuntLogo } from "./icons/ProductHuntLogo";
@@ -5,15 +6,17 @@ import { ProductsIcon } from "./icons/ProductsIcon";
 import { JobsIcon } from "./icons/JobsIcon";
 import { MarketplaceIcon } from "./icons/MarketplaceIcon";
 import { SearchIcon } from "./icons/SerachIcon";
-import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { useUser } from "@clerk/nextjs";
+import Image from "next/image";
 
 export default function Header() {
   const { user, isLoaded } = useUser();
 
-  if (!isLoaded) return null; // Aguarde até que os dados do usuário sejam carregados
+  if (!isLoaded || !user) return null; // Aguarde até que os dados do usuário sejam carregados
 
   const profileImageUrl = user?.imageUrl || "";
+  const username = user?.fullName || "username";
   return (
     <header className="h-16 flex items-center justify-center px-6 border-b border-font-grey/0.5">
       <div className="flex items-center gap-6 mr-auto">
@@ -63,11 +66,11 @@ export default function Header() {
         <SignedIn>
           <div className="flex items-center gap-2">
             {profileImageUrl && (
-              <img
-                src={profileImageUrl}
-                alt={user?.fullName}
-                className="w-10 h-10 rounded-full"
-              />
+              <UserButton
+                appearance={{ elements: { userButtonAvatarBox: "w-10 h-10" } }}
+              >
+                <Image src={profileImageUrl} alt={username} />
+              </UserButton>
             )}
           </div>
         </SignedIn>
