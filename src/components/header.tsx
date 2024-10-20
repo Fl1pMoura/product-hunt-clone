@@ -13,7 +13,7 @@ import Image from "next/image";
 export default function Header() {
   const { user, isLoaded } = useUser();
 
-  if (!isLoaded || !user) return null; // Aguarde até que os dados do usuário sejam carregados
+  if (!isLoaded) return null; // Aguarde até que os dados do usuário sejam carregados
 
   const profileImageUrl = user?.imageUrl || "";
   const username = user?.fullName || "username";
