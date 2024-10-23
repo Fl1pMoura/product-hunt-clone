@@ -8,13 +8,11 @@ import { MarketplaceIcon } from "./icons/MarketplaceIcon";
 import { SearchIcon } from "./icons/SerachIcon";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { useUser } from "@clerk/nextjs";
-import Image from "next/image";
 
 export default function Header() {
   const { user, isLoaded } = useUser();
 
   const profileImageUrl = user?.imageUrl || "";
-  const username = user?.fullName || "username";
   return (
     <header className="bg-white h-16 flex items-center justify-center px-6 border-b border-font-grey/0.5">
       <div className="flex items-center gap-6 mr-auto">
@@ -67,9 +65,7 @@ export default function Header() {
             {profileImageUrl && (
               <UserButton
                 appearance={{ elements: { userButtonAvatarBox: "w-10 h-10" } }}
-              >
-                <Image src={profileImageUrl} alt={username} />
-              </UserButton>
+              ></UserButton>
             )}
           </div>
         </SignedIn>

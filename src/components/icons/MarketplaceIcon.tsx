@@ -16,8 +16,8 @@ export function MarketplaceIcon({ className }: MarketplaceIconProps) {
         fill="currentColor"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M6.208 10.667a.625.625 0 0 1 .625-.625h3.334a.625.625 0 1 1 0 1.25H6.833a.625.625 0 0 1-.625-.625Z"
         fill="currentColor"
       />

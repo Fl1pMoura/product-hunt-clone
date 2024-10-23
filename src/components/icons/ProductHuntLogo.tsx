@@ -9,7 +9,7 @@ export function ProductHuntLogo({ className }: ProductHuntLogoProps) {
       className={className}
       viewBox="0 0 40 40"
     >
-      <g fill="none" fill-rule="evenodd">
+      <g fill="none" fillRule="evenodd">
         <path
           fill="#FF6154"
           d="M40 20c0 11.046-8.954 20-20 20S0 31.046 0 20 8.954 0 20 0s20 8.954 20 20"
