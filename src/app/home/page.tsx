@@ -1,6 +1,7 @@
 import { Product } from "@/entities/Products";
 import ProductCard from "./components/ProductCard";
 import TopicsButton from "./components/TopicsButton";
+import SuggestionCard from "./components/SuggestionCard";
 
 export default function Home() {
   const fakeProducts: Product[] = [
@@ -10,6 +11,7 @@ export default function Home() {
       tags: ["AI", "marketing", "New"],
       url: "https://logospng.org/download/telegram/logo-telegram-4096.png",
       upVotes: 100,
+      classification: 3,
     },
     {
       productName: "Product 2",
@@ -17,6 +19,7 @@ export default function Home() {
       tags: ["AI", "Python"],
       url: "https://logospng.org/download/telegram/logo-telegram-4096.png",
       upVotes: 150,
+      classification: 4,
     },
     {
       productName: "Product 3",
@@ -24,6 +27,7 @@ export default function Home() {
       tags: ["Javascript", "Rust", "Nest"],
       url: "https://logospng.org/download/telegram/logo-telegram-4096.png",
       upVotes: 110,
+      classification: 2,
     },
   ];
 
@@ -51,7 +55,7 @@ export default function Home() {
           <TopicsButton buttonText="SaaS" />
         </ul>
       </div>
-      <div className="w-3/4">
+      <div className="w-3/5">
         <h2 className="font-semibold text-xl text-font-light-blue mb-6 block">
           Top Charts
         </h2>
@@ -68,10 +72,22 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <div className="w-1/4">
+      <div className="w-2/5 pl-4">
         <h2 className="font-semibold text-xl text-font-orange mb-6 block">
           Suggested for you
         </h2>
+        <div className="space-y-4">
+          {sortedProjects.map((products, index) => (
+            <SuggestionCard
+              key={index}
+              imageUrl={products.url}
+              description={products.description}
+              productName={products.productName}
+              tags={products.tags}
+              classification={products.classification}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

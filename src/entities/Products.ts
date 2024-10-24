@@ -4,4 +4,5 @@ export interface Product {
   tags: string[];
   url: string;
   upVotes: number;
+  classification: number;
 }
