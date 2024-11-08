@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 interface ProductCardProps {
-  imageUrl: string;
+  imageUrl?: string;
   productName: string;
   description: string;
   tags: string[];
@@ -22,7 +22,10 @@ export default function ProductCard({
           width={48}
           height={48}
           className="w-auto h-auto"
-          src={imageUrl}
+          src={
+            imageUrl ||
+            "https://www.imagensempng.com.br/wp-content/uploads/2022/02/Logo-Telegram-Png-768x768.png"
+          }
           alt={productName}
           priority
         />

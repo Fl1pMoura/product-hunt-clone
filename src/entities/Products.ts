@@ -1,8 +1,12 @@
+import { Tags } from "./Tags";
+
 export interface Product {
-  productName: string;
+  name: string;
   description: string;
-  tags: string[];
   url: string;
-  upVotes: number;
-  classification: number;
+  creatorId: string;
+  creator?: string;
+  createdAt: string;
+  upvotesCount: number;
+  tags: Tags[];
 }

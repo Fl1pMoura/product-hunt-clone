@@ -1,15 +1,14 @@
 import Image from "next/image";
 
 interface SuggestionCardProps {
-  imageUrl: string;
+  imageUrl?: string;
   productName: string;
   description: string;
   tags: string[];
-  classification: number;
+  classification?: number;
 }
 
 export default function SuggestionCard({
-  classification,
   description,
   imageUrl,
   productName,
@@ -22,7 +21,10 @@ export default function SuggestionCard({
           width={40}
           height={40}
           className="w-auto h-auto"
-          src={imageUrl}
+          src={
+            imageUrl ||
+            "https://www.imagensempng.com.br/wp-content/uploads/2022/02/Logo-Telegram-Png-768x768.png"
+          }
           alt={productName}
           priority
         />
@@ -40,9 +42,9 @@ export default function SuggestionCard({
                 {tag}
               </li>
             ))}
-          <li className="ml-2 relative before:content-normal before:size-1 before:bg-font-grey before:rounded-full flex items-center gap-2">
+          {/* <li className="ml-2 relative before:content-normal before:size-1 before:bg-font-grey before:rounded-full flex items-center gap-2">
             {classification}/5
-          </li>
+          </li> */}
         </ul>
       </div>
     </div>
