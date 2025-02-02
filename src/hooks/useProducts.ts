@@ -5,6 +5,7 @@ import { Product } from "../entities/Products";
 
 export function useProducts() {
   const { data, isFetching } = useQuery<Product[]>({
+    staleTime: 5000,
     queryKey: ["getProducts"],
     queryFn: productsService.getAll,
   });
